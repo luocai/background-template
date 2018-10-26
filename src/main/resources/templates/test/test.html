@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.form.js"></script>
+</head>
+<body>
+
+<form id = "myform">
+    <input type="text" name="username">
+    <input type="text" name="password">
+
+    <button id="subBtn">提交</button>
+</form>
+
+<script type="text/javascript">
+
+    $("#subBtn").click(function () {
+        alert("haha");
+        $.ajax({
+            type:"POST",
+            url:"/login",
+            async:false,
+            data:{
+                "username":username,
+                "password":password
+            },
+            dataType:"json",
+            success:function(result){
+                alert("hhah");
+                console.log(result);
+                if (result.resultCode == 200){
+                    alert("登录成功");
+                    location.href="/list";
+                }else{
+                    alert("糟糕");
+                    $("#msg").text(result.message);
+                }
+            },
+            error:function () {
+                alert("失败了");
+            }
+        })
+        alert("hdfjldf");
+
+    })
+</script>
+
+</body>
+</html>

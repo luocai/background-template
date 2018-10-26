@@ -1,0 +1,99 @@
+<!DOCTYPE html><!-- saved from url=(0032)http://vadmin.lanyueos.com/login -->
+<html class=" " xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>川大</title>
+<link href="../css/login.css" rel="stylesheet">
+<!-- 引入bootstrap和jQuery -->
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div id="app">
+	<div class="fullscreen">
+		<div class="login-box">
+			<div style="text-align: center;">
+				<img src="../images/login.png" alt="" class="logo">
+			</div>
+			<p class="text-tips" th:if="${result != null}" th:text="${result.message}"></p>
+			<p class="text-tips" th:if="${result == null}">
+				你好，欢迎登录
+			</p>
+			<form id="login-form" action="/login" method="post" class="login-form">
+				<div class="m-list-group">
+					<div class="m-list-group-item">
+						<input type="text" id="username" name="username" placeholder="账号" class="m-input">
+					</div>
+					<div class="m-list-group-item">
+						<input type="password" id="password" name="password" placeholder="密码" class="m-input">
+					</div>
+				</div>
+				<button id="login-btn" class="m-btn sub select-none">登录</button>
+			</form>
+			<div style="margin-top: 50px;">
+			</div>
+		</div>
+	</div>
+</div>
+<script th:inline="javascript">
+
+
+    // $()
+    //
+    // $("#login-btn").click(function(){
+    //     alert("进啦了");
+    //
+    //     // $.ajax({
+    //      //    type:"POST",
+    //      //    url:"/login",
+    //      //    async:false,
+		// // 	data:{
+    //      //        "username":username,
+		// // 		"password":password,
+		// // 	},
+		// // 	dataType:"json",
+    //      //    success:function(result){
+    //      //        alert("hhah");
+    //      //        console.log(result);
+    //      //        if (result.resultCode == 200){
+    //      //            alert("登录成功");
+    //      //            location.href="/list";
+    //      //        }else{
+    //      //            alert("糟糕");
+    //      //            $("#msg").text(result.message);
+    //      //        }
+    //      //    }
+		// // })
+    //
+    //     $("#login-form").ajaxSubmit({
+    //         type:"POST",
+    //         url:"/login",
+    //         async:false,
+    //         dataType:"json",
+    //         success:function(result){
+    //             console.log(result);
+		// 	    if (result.resultCode == 200){
+		// 			alert("登录成功");
+		// 			location.reload();
+		// 		    // location.href="/list";
+		// 	    }else{
+		// 		    $("#msg").text(result.message);
+		// 	    }
+    //         },
+    //         error:function () {
+    //             alert("都没有进入啦");
+    //         }
+    //     });
+    //
+    //
+    //
+    // })
+
+
+
+</script>
+
+</body>
+</html>

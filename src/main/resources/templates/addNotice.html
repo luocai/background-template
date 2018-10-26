@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>增加公告</title>
+    <script th:src="@{/layui/layui.js}"></script>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+
+    <!-- 引入bootstrap和jQuery -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery-3.2.1.min.js}" ></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.form.js}"></script>
+
+    <!-- 引入wangEditor富文本编辑器 ！！！-->
+    <script type="text/javascript" th:src="@{/release/wangEditor.min.js}"></script>
+
+    <style>
+        .breadcrumb {
+            padding: 8px 15px;
+            margin-bottom: 20px;
+            margin-left:10px;
+            margin-right:0px;
+            list-style: none;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        #cover{
+            width:120px;
+            height:120px;
+            margin:0 0 20px 111px;
+            display:none;
+        }
+
+
+    </style>
+
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">后台管理</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <!-- <ul class="layui-nav layui-layout-left">
+          <li class="layui-nav-item"><a href="main">首页</a></li>
+        </ul> -->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="../images/login.png" class="layui-nav-img">
+                    admin
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="##">基本资料</a></dd>
+                    <dd><a href="##">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a th:href="@{/logout}">退出</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">公告管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="articleList">公告列表</a></dd>
+                        <dd><a href="write">增加公告</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">账号管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="commentList">所有账号</a></dd>
+                        <dd><a href="commentList">增加账号</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">用户管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">所有用户</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="articleList"> 首页</a> <span>&nbsp;</span>/<span>&nbsp;&nbsp;</span><a href="#">增加公告</a></li>
+                    <!--<li class="active"><a href="#">新建文章</a></li>-->
+                </ul>
+            </div>
+
+
+
+            <form class="layui-form"  method="post" id="myForm" enctype="multipart/form-data">
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">标题 <span style="color: #FF5722; ">*</span></label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" lay-verify="title" id="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                    </div>
+                </div>
+
+                <div>
+                    <textarea name="content" id="articlContent" style="display:none;"></textarea>
+                </div>
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">内容 <span style="color: #FF5722; ">*</span></label>
+                    <div class="layui-input-block">
+                        <div  id="editor" name="content">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type="button" class="layui-btn" id="submitForm" value="提交">
+                        <!-- <button class="layui-btn" id="submitForm">确定</button> -->
+                        <button type="reset" class="layui-btn layui-btn-primary" onclick="getCateIds()">重置</button>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<script th:inline="javascript">
+
+    layui.use(['form', 'layedit', 'laydate'], function() {
+        var form = layui.form
+            , layer = layui.layer
+            , laydate = layui.laydate;
+
+    });
+
+    var E = window.wangEditor;
+    var editor = new E('#editor');
+    // 或者 var editor = new E( document.getElementById('editor') )
+
+
+    //给texteara赋值
+    var $text1 = $('#content');
+    editor.customConfig.onchange = function (html) {
+        // 监控变化，同步更新到 textarea
+        // alert("改变了");
+        $text1.val(html)
+    }
+
+    editor.customConfig.zIndex = 100;
+    editor.create();
+
+
+    $("#submitForm").click(function(){
+        $("#myForm").ajaxSubmit({
+            type:"POST",
+            url:"/notice",
+            async:false,
+            dataType:"json",
+            success:function(result){
+                if (result.resultCode == 200){
+                    alert("创建成功");
+                    location.href="/notice/list";
+                }else{
+                    alert("提交失败");
+                    location.reload();
+                }
+
+            },
+            error:function () {
+                alert("都没有进入啦");
+            }
+        });
+        alert("出啦");
+    })
+
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+
+</script>
+</body>
+</html>

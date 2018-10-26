@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<link href="./css/head_style.css" rel="stylesheet" type="text/css" />
+    <link href="./css/scrollpic.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript"src="./js/mapSelect.js"></script>
+	
+	
+	<style>
+	
+		.nav-menu-col{
+		    border-left: 8px solid #e0e0e0;
+			border-top: 4px solid #e0e0e0;
+			
+			float: left;
+			width: 250px;
+			padding-left: 8px;
+		}
+		
+		.sub-links{
+			list-style: none; 
+			padding: 20px 28px;
+			border-bottom: 1px solid #dfdfdf;
+			
+		}
+
+		.sub-links:hover{
+			cursor:pointer;
+			color: #ba2a17;
+		}
+
+		.pressed{
+			color: #ba2a17;
+		}
+
+		a{
+		text-decoration:none;
+		}
+		
+		.article{
+			width:73%;
+			margin-left:30px;
+			float:left;
+			font-size: 20px;
+			color: #333333;
+		}
+		
+		.nav-title{
+			margin-top:-10px;
+			float:right;
+		}
+
+		.scrollpic-eat{
+			width: 100%;
+			background-color: #bdd8d7;
+			margin:0;
+			padding: 30px 0;
+			height: 1500px;
+			border-top:3px dashed #51938f;
+		}
+		
+		#eat{
+
+		}
+		
+		#live{
+			display:none;
+		}
+		#fun{
+			display:none;
+		}
+
+	</style>
+   
+	
+</head>
+
+<body >
+
+    <div class="head" >
+        <img src="./images/xiaohui.png" class="chuanda-badge">
+    </div>
+    <nav class="nav-header">
+        <ul class="nav-menu">
+            <li><a href="index-begin.html" class="three-d">
+                首页
+                <span class="three-d-box"><span class="front">首页</span><span class="back">首页</span></span>
+            </a></li>
+            <li><a href="index-intro.html" class="three-d">
+                大川介绍
+                <span class="three-d-box"><span class="front">大川介绍</span><span class="back">大川介绍</span></span>
+            </a></li>                        
+            <li><a href="index-studentsummary.html" class="three-d">
+                新生统计
+                <span class="three-d-box"><span class="front">新生统计</span><span class="back">新生统计</span></span>
+            </a></li>
+			<li><a href="index-studentsummary.html" class="three-d">
+				报到流程
+				<span class="three-d-box"><span class="front">报到流程</span><span class="back">报到流程</span></span>
+			</a>
+			</li>
+            <li><a href="dachuan_map.html" class="three-d">
+                大川地图
+                <span class="three-d-box"><span class="front">大川地图</span><span class="back">大川地图</span></span>
+            </a>
+            <ul class="clearfix unstyled drop-menu">
+                    <li><a href="dachuan_map.html" class="three-d" onClick="mapSelect('map1');">
+                        江安地图
+                        <span class="three-d-box"><span class="front">江安地图</span><span class="back">Jiangan</span></span>
+                   </a></li>
+                    <li><a href="dachuan_map.html" class="three-d" onClick="mapSelect('map2');">
+                        望江地图
+                        <span class="three-d-box"><span class="front">望江地图</span><span class="back">Wangjiang</span></span>
+                    </a></li>
+                    <li><a href="dachuan_map.html" class="three-d" onClick="mapSelect('map3');">
+                        华西地图
+                        <span class="three-d-box"><span class="front">华西地图</span><span class="back">WestChina</span></span>
+                    </a></li>
+                                   
+			</ul>
+            </li>
+            <li><a href="javascript:void(0);" class="three-d active">
+                衣食住行
+                <span class="three-d-box"><span class="front">衣食住行</span><span class="back">衣食住行</span></span>
+                </a>
+                <ul class="clearfix unstyled drop-menu">
+                    <li><a href="#" class="three-d">
+                        吃在川大
+                        <span class="three-d-box"><span class="front">吃在川大</span><span class="back">吃在川大</span></span>
+                   </a></li>
+                    <li><a href="#" class="three-d">
+                        住在川大
+                        <span class="three-d-box"><span class="front">住在川大</span><span class="back">住在川大</span></span>
+                    </a></li>
+                    <li><a href="#" class="three-d">
+                        玩在川大
+                        <span class="three-d-box"><span class="front">玩在川大</span><span class="back">玩在川大</span></span>
+                    </a></li>
+                                   
+                </ul>
+            </li>
+		</ul>
+	</nav>
+    <div class="scrollpic-eat" >
+		<nav class="nav-menu-col">
+			<ul>
+				<li class="sub-links pressed"><a onClick="showEat();">吃在川大</a></li>
+				<li class="sub-links"><a onClick="showLive();">住在川大</a></li>
+				<li class="sub-links"><a onClick="showFun();">玩在川大</a></li>
+			</ul>
+		</nav>
+		
+		<div class ="article">
+			<div id="eat" >
+				<h3 class="nav-title"> 吃在川大</h3>
+				<br>
+				<hr>
+				<img src="./images/eat.png" style="width:888px;"></img>
+				<p>
+
+					1、西园一餐厅: <br>
+
+					一楼可以充值，3-8 块，大部分家常菜，特供菜，小炒，炒饭炒面，面食，米线，馒头，早餐有馒头，包子，锅盔，鸡肉块等多种，还有豆浆，豆奶，西米露等热饮除此之外还有咖啡； 午餐是家常菜，有素菜，一份 1.5 元；<br>
+
+					荤菜一份两样菜是有 4 块的和 5 块 的，米饭是两角钱一两，女生一般二两就够，男生一般是默认的三两。<br>
+
+					晚餐和午餐一样的。 二楼，基本上同一楼,比一楼好吃得多但价格会贵点。有个休闲什么广场，好像可以看书，下棋之类的.<br> <br>
+
+					2、西园二餐厅:  <br>
+
+					一楼，可以充值，3-8 块，大部分家常菜，特供菜，小炒，炒饭炒面，面食，米线，冒菜，卤菜，二餐和一餐是一样的，只是一餐离女生寝室较近，二餐离男生的寝室较近。 二楼，基本上同一餐二楼，有自助形式的点餐，但是秋冬春季有特供煲汤，4-6 元，很实惠<br><br>
+
+					3、东园三餐厅： <br>
+
+					三餐在文科楼附近，外观和一餐二餐相比有些简陋，但所供食物与价格差不多相同， 还是有很多同学喜欢去三餐的。 个人觉得三餐比一餐好很多，比二餐好点儿。 <br><br>
+
+					4、小吃城,牛肉馆,清真食堂: <br>
+
+					小吃城：环境较一、二餐好，主要经营米线，面食，抄手，饺子，粥及各类包子点心，小吃城有米线，分为三鲜和牛肉，大碗 7 块，小碗 5 块，米线一律为清汤； 还有刀削面，刀削面有牛肉的，鸡杂的，鸡肉的，杂酱的等多种，分为清汤和红汤， 也是大碗的 7 块，小碗的5块。 当然还有面了，面的种类和刀削面的种类是一样的，分类也是一样的。 除此之外，小吃城还全天（直到晚上 9 点关门）供应包子等小吃和稀饭炒饭，拌面。<br>
+
+					牛肉馆：家常菜，炒菜，米线，砂锅，很多社团组织或者学生会晚上开会的地方 <br>
+
+					清真食堂(二楼)：面食，米线，杂食，鸡腿，清真食品，手抓饭，饭的质量很好 <br><br>
+
+					5、馨苑<br>
+
+					馨苑美食广场（二楼）：3-8 块，面食，盖浇饭，炒河粉，冒菜，蒸饺，凉面等，夏季有空调 <br>
+
+					馨苑食府（二楼）：15-25 块，大部分川菜，有包间，有机麻，除了吃饭还能打麻将，推荐的有三色金针菇，双椒牛柳，胡椒牛蛙，水煮牛肉，鸡迷芽菜等， 特别不推荐香水牛肉和京酱肉丝！ <br><br>
+
+					6、校外饮食 <br>
+
+					（1）文星镇：袁记串串香、琪淼粥底火锅、大西北一品香、山珍养生馆、野菌汤锅、众 才豆花、草根小米辣、原野烧烤、王哥冷锅鱼、冒牌货、随手一冒、仟百 度纸上烤肉店、韩国自助涮烤店、韩国拌饭、东北饭馆、重庆胖妈火锅、 龙腾火锅、DIGOS 、 廖记棒棒鸡、宜宾燃面、家常菜馆……其实文星镇美食还是挺多的，大家慢慢去发现吧。 <br>
+
+					（2）杨胖子干锅：干锅鸡、兔、排骨、牛肉等，江安学生最爱的干锅；<br>
+
+					（3）湘西人家：典型的主营各种菜品的饭店，味道还蛮不错的（南门对面）。 <br><br>
+				<p>
+			</div>
+			
+			<div id="live">
+				<h3 class="nav-title"> 住在川大</h3>
+				<br>
+				<hr>
+				<img src="./images/sushe.jpg" style="width:888px; height: 300px;"></img>
+				<p>
+					1. 江安校区的学生宿舍条件不错,相比望江和华西校区环境更好。宿舍全部是三室一厅一厕一阳台式的商品房，这点和很多学校"4人间+厕所"的模式比起来,更为温馨. <br> <br>
+
+					2. 每间寝室均装有空调和两把电扇，仅需缴纳电费即可使用；每个围合有洗衣房，全自动洗衣机3元/桶，烘干机4元/桶；围合里另有开水房，24小时提供开水，刷卡0.2元/壶。  <br> <br>
+
+					3. 江安西园一共有21个舍,1-9舍在商业街以西,10-21舍早商业街以东;东园还在修建之中,仅研究生宿舍在使用之中。 <br> <br>
+
+					4. 全部公寓式管理,称之为围合,一个围合一般有8-12个单元,每个单元6层楼,1层两套房.有宿舍管理员(基本上一律称为阿姨,无论年龄大小)24小时看守围合大门,也有专人负责卫生问题.进出围合需要刷卡(饭卡,可以在食堂和澡堂使用,有的私人餐厅也支持饭卡)或者登记信息.带大型包裹,箱子或者笔记本电脑出去需要登记,但是平时也得注意关好寝室门，注意防盗。 <br> <br>
+
+					5. 理论上晚上11点以后不再允许随意进出围合,有紧急事项和向辅导员请假的除外.另外规定男生不得随意进出女生围合,女生不得随意进出男生围合.有特殊情况(需要进围合办公室处理公事)和特殊围合(个别男女混住)除外. <br> <br>
+
+					6.楼下设有自动贩卖机(投币,接受5元,10元纸币,1元硬币)有可乐,雪碧,芬达,蓝带等各种饮料,还有各种小吃以及袋装泡面. <br> <br>
+
+				</p>
+			</div>
+
+
+			
+			<div id="fun">
+				<h3 class="nav-title"> 玩在川大</h3>
+				<br>
+				<hr>
+				<h3>四川大学周边景点</h3>
+				<div>
+					<p>
+						黄龙溪古镇（江安校区西南门外坐808路车，或者在金色校园广场赶825B到终点站华阳汽车站下车，直接买票去；自然风光,古镇 ）<br><br>
+
+						洛带古镇（望江校区坐车307到五桂桥-2元一人，然后转219路-3元一个人，直接到洛带古镇 ) <br><br>
+
+						欢乐谷（石羊转93路到华侨城下）<br><br>
+
+						塔子山烧烤（校车到望江西门出去92或107，到终点站或者塔子山公园站，其中92路比较近 )<br><br>
+
+						龙泉桃花沟（在江安校区川大路口站坐898路至龙泉汽车总站下车，换乘876a或865、872a等，到桃花沟下）<br><br>
+
+						武侯祠（在望江校区磨子桥站乘77路到顺江路站下，换乘82路在武侯祠站下）<br><br>
+
+						杜甫草堂（在望江校区磨子桥站乘19路在杜甫草堂站下）<br><br>
+					</p>
+					
+				</div>
+			
+			</div>
+			
+		</div>
+		
+
+		
+	</div>
+	
+	<script type="text/javascript" >
+	
+		
+		var eat = document.getElementById("eat");
+		var live = document.getElementById("live");
+		var fun = document.getElementById("fun");
+
+		var lis = document.getElementsByClassName("sub-links");
+
+		function showEat(){
+            fun.style.display="none";
+            live.style.display="none";
+            eat.style.display="block";
+            //调整页面长度
+            document.getElementsByClassName("scrollpic-eat")[0].style.height="1500px";
+			for(var i = 0; i < lis.length; i++){
+
+			    if(i==0){
+			        lis[i].classList.add("pressed");
+				}else{
+			        if(lis[i].classList.contains("pressed")){
+			            lis[i].classList.remove("pressed");
+					}
+
+				}
+			}
+		}
+		function showLive(){
+            fun.style.display="none";
+            eat.style.display="none";
+            live.style.display="block";
+            //调整页面长度
+            document.getElementsByClassName("scrollpic-eat")[0].style.height="1000px";
+            for(var i = 0; i < lis.length; i++){
+                if(i==1){
+                    lis[i].classList.add("pressed");
+                }else{
+                    if(lis[i].classList.contains("pressed")){
+                        lis[i].classList.remove("pressed");
+                    }
+
+                }
+            }
+		}
+		function showFun(){
+
+            eat.style.display="none";
+            live.style.display="none";
+            fun.style.display="block";
+            //调整页面长度
+            document.getElementsByClassName("scrollpic-eat")[0].style.height="700px";
+            for(var i = 0; i < lis.length; i++){
+                if(i==2){
+                    lis[i].classList.add("pressed");
+                }else{
+                    if(lis[i].classList.contains("pressed")){
+                        lis[i].classList.remove("pressed");
+                    }
+
+                }
+            }
+		}
+	</script>
+	
+
+	
+</body>
+</html>
